@@ -1,0 +1,6 @@
+elasticsearch
+PyYAML
+scikit-learn
+matplotlib
+pandas
+seaborn

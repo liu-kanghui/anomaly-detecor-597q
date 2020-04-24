@@ -1,0 +1,78 @@
+# need an input file
+# OR
+# to fill in the filter information
+---
+input_file: netflow.json
+
+client_id: !!str Covington
+filter:
+  - '_type: netflow'
+  # SYN packets only, to reduce amount of data
+  - 'netflow.tcp_flags:2'
+result_size: 10000
+scroll: '10m'
+
+date_range:
+  start_date: [2019,5,14] #[year, month, day]
+  range: 1
+
+knn_parameters:
+  delta: 6.11
+
+port_to_examin: 22
+
+feature_selection:
+  features:
+    percent_of_same_service_to_same_host: True
+    percent_on_same_host_to_same_service: True
+    bytes_transferred_over_all_services: True
+    bytes_transferred_over_current_host: True
+    bytes_transferred_over_current_service: True
+    protocol: True
+    source_bytes: True
+    source_IP: True
+    source_port: True
+    TCP_flags: True
+    timestamp: True
+    num_different_services_accessed: True
+    num_FIN_flags: True
+    num_ICMP_packets: True
+    num_RST_flags: True
+    num_SYN_flags: True
+    num_to_certain_services: True
+    num_to_privileged_services: True
+    num_to_the_same_host: True
+    num_to_the_same_service: True
+    num_to_unprivileged_services: True
+    num_total_connections: True
+    num_urgent: True
+    percent_control_packets: True
+    percent_data_packets: True
+
+  normalize:
+      percent_of_same_service_to_same_host: True
+      percent_on_same_host_to_same_service: True
+      bytes_transferred_over_all_services: True
+      bytes_transferred_over_current_host: True
+      bytes_transferred_over_current_service: True
+      protocol: False
+      source_bytes: True
+      source_IP: False
+      source_port: False
+      TCP_flags: False
+      timestamp: False
+      num_different_services_accessed: True
+      num_FIN_flags: True
+      num_ICMP_packets: True
+      num_RST_flags: True
+      num_SYN_flags: True
+      num_to_certain_services: True
+      num_to_privileged_services: True
+      num_to_the_same_host: True
+      num_to_the_same_service: True
+      num_to_unprivileged_services: True
+      num_total_connections: True
+      num_urgent: True
+      percent_control_packets: True
+      percent_data_packets: True
+
